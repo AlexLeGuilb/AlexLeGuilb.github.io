@@ -1,0 +1,162 @@
+html, body {
+    min-width: 320px !important;
+    background-color: black;
+}
+
+/* Section principale avec parallaxe */
+.parallax {
+    position: relative;
+    min-height: 100vh;
+    background-attachment: fixed; /* clé du parallaxe */
+    background-position: cover;
+    background-repeat: no-repeat;
+    background-size: cover;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+/* Rendre la section extendable sur mobile */
+@media (max-width: 768px) {
+    .parallax {
+        position: relative;
+        min-height: 100vh;
+        background-attachment: scroll;
+        background-position: cover;
+        background-repeat: no-repeat;
+        background-size: cover;
+        align-items: center;
+        justify-content: center;
+        color: white;
+    }
+}
+
+.parallax-1 {
+    background-image: url('../img/svg/fond.svg');
+}
+
+.parallax-2 {
+    background-image: url('../img/svg/fondInverse.svg');
+}
+
+
+/* Section suivante pour scroller */
+.section {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: calc(12px + 0.75vw);
+}
+
+.content {
+    background-color: #f8f9fa;
+    color: black;
+}
+
+.section-title {
+    margin: auto;
+    font-family: familySpectral, serif;
+    font-size: calc(30px + 2vw);
+}
+
+.section-subtitle {
+    margin: auto;
+    font-size: calc(20px + 2vw);
+}
+
+.section-link {
+    text-decoration: none;
+    color: white;
+}
+
+.section-content > p {
+    text-align: justify;
+}
+
+.section-credit {
+    font-size: 18px;
+    display: inline-block;
+    margin-bottom: 0;
+    color: #b7472a;
+    font-size: 16px;
+    font-weight: 400;
+    font-style: italic;
+    position: relative;
+}
+
+.acc-subtitle {
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.acc-text {
+    font-size: calc(10px + 0.3vw);
+}
+
+.carousel {
+    background-color: #1a1a1a;
+    color: black;
+    margin: auto;
+}
+
+.carousel-caption {
+    background: rgba(0, 0, 0, 0.4); /* fond semi-transparent */
+    backdrop-filter: blur(2px);      /* effet de flou */
+    -webkit-backdrop-filter: blur(6px); /* support Safari */
+}
+
+.projet-img {
+    width: 100%;
+}
+
+#carChess {
+    max-width: 400px;
+}
+
+#carChess > .projet-img {
+    max-width: 400px;
+    max-height: 400px;
+}
+
+#carFuturo {
+    max-width: 800px;
+}
+
+#carFuturo .projet-img {
+    max-width: 800px;
+    max-height: 800px;
+}
+
+#carUscb {
+    max-width: 800px;
+}
+
+#carUscb .projet-img {
+    max-width: 50%;
+    max-height: 800px;
+}
+
+.contact {
+    background-color: #1a1a1a;
+    color: #FFF;
+}
+
+.skillTitle {
+    font-size: calc(25px + 0.5vw);
+    font-weight: 500;
+    color: #b7472a;
+}
+
+.number {
+    font-style: italic;
+    color: #b7472a;
+}
+
+.footer-link {
+    text-decoration: none;
+    color: white;
+}
+
+.footer-title {
+    color: #b7472a;
+}

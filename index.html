@@ -1,42 +1,673 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="board.css">
-    <title>Offline Chess</title>
+    <title>Alexandre Guilbaud</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,700;0,800;1,200;1,300;1,400;1,500;1,700&display=swap">
+
+    <link rel="stylesheet" href="src/main.css">
+
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    
+    <link rel="stylesheet" href="src/ressources/fizz/font-mfizz.css">
+
+    
+    <link rel="stylesheet" href="node_modules/aos/dist/aos.css"/>
+    <link rel="stylesheet" href="src/css/magnific-popup.css">
+    
+    <link rel="stylesheet" href="src/css/index.css">
 </head>
+
 <body>
-    <div id="playground">
-        <div id="info">
-            <div id="beforeStart">Jeux d'échec multijoueur en local</div>
-            <div id="turn"></div>
-            <div id="check"></div>
+    <nav id="navbar" class="navbar navbar-expand-lg navbar-dark fixed-top transparent" style="padding: 0;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#accueil">
+                <img id="logo" src="src/img/autre/logo.png" style="width: 40px;" alt="PortFolio">
+                Portfolio
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navBS" aria-controls="navBS" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navBS">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#exp">Expériences</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projet">Projets</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#formation">Formations</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skill">Compétences</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <div id="chess">
-            <div id="promotion-popup">
-                <div id="promo-choices">
-                    <img src="" id="q" class="promo-img" onclick="promoteTo(this.getAttribute('data-piece'))" alt="Reine">
-                    <img src="" id="r" class="promo-img" onclick="promoteTo(this.getAttribute('data-piece'))" alt="Tour">
-                    <img src="" id="b" class="promo-img" onclick="promoteTo(this.getAttribute('data-piece'))" alt="Fou">
-                    <img src="" id="n" class="promo-img" onclick="promoteTo(this.getAttribute('data-piece'))" alt="Cavalier">
+    </nav>
+
+    <!-- fond accueil -->
+    <section id="accueil" class="section parallax parallax-1">
+        <div class="container">
+            <div class="text-center" data-aos="fade-up">
+                <div class="section-title"><i>Alexandre Guilbaud</i></div>
+                <p>
+                    <a class="section-link btn btn-outline-light" href="#about">
+                        Lire la suite <i class="fa fa-chevron-right ml-2"></i>
+                    </a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- about -->
+    <section id="about" class="section content">
+        <div class="container">
+            <div class="row">
+                <div class="my-5 section-title text-center">A propos de moi</div>
+            </div>
+            <div class="row">
+                <div class="col-md-6" data-aos="fade-right">
+                    <img class="img-fluid" src="src/img/autre/about.png" alt="">
+                </div>
+                <div class="col-md-6 section-content" data-aos="fade-up">
+                    <p>
+                        Je suis Alexandre Guilbaud, j'ai <span id="age"></span> ans.
+                    </p>
+                    <p>
+                        Développeur web en pleine évolution, j'aime apprendre, expérimenter et comprendre comment les choses fonctionnent. Ma curiosité me pousse à progresser chaque jour et à relever de nouveaux défis techniques.
+                    </p>
+                    <p class="mt-3 pt-3 text-center">
+                        <strong class="number">5</strong>
+                        <span>Centres d'intérêt principaux</span><br/>
+                    </p>
+                    <p class="d-flex justify-content-evenly">
+                        <i class="fas fa-2x fa-space-shuttle" data-bs-toggle="tooltip" data-bs-title="Espace"></i>
+                        <i class="fas fa-2x fa-cog" data-bs-toggle="tooltip" data-bs-title="Technologie"></i>
+                        <i class="fas fa-2x fa-atom" data-bs-toggle="tooltip" data-bs-title="Science"></i>
+                        <i class="fas fa-2x fa-music" data-bs-toggle="tooltip" data-bs-title="Musique"></i>
+                        <i class="fas fa-2x fa-gamepad" data-bs-toggle="tooltip" data-bs-title="Jeux"></i>
+                    </p>
+                    <p><span class="section-credit">source de l'image : Sry4disturb (avec wallpaper engine)</span></p>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <div id="board"></div>
-        </div>
-        <div id="gameBtn">
-            <button type="button" id="newGame" onclick="newGame()">Nouvelle partie</button>
-            <button type="button" id="surrender" onclick="surrender()" style="visibility: hidden;">Abandonner</button>
-        </div>
-        <div id="endgame-modal" style="display:none;">
-            <div class="endgame-modal-box">
-                <div type="button" onclick="newGame()" class="endgame-modal-message"></div>
-                <button class="endgame-modal-btn">Nouvelle partie</button>
+    <!-- experience -->
+    <section id="exp" class="section parallax parallax-2">
+        <div class="container">
+            <div class="row">
+                <h2 class="my-5 section-title text-center" data-aos="fade-up">Expériences</h2>
+            </div>
+            <div class="row">
+                <div class="accordion" id="accordeon" data-aos="fade-up">
+                    <div class="accordion-item my-2">
+                        <h2 class="accordion-header" id="accHead7">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#accBody7" aria-expanded="false" aria-controls="accBody7">
+                                <i class="fas fa-user-cog fa-2x p-2 float-left" aria-hidden="true"></i>
+                                <h4 class="text-uppercase mb-0 py-2">
+                                    TOLEDE
+                                </h4>
+                            </button>
+                        </h2>
+                        <div id="accBody7" class="accordion-collapse collapse" aria-labelledby="accHead7" data-bs-parent="#accordeon">
+                            <div class="accordion-body">
+                                <p class="acc-subtitle">Juillet 2022 - Mai 2024</p>
+                                <p class="acc-text p-md-2">
+                                    Développeur logiciel (ERP)<br/>
+                                    Développement d'un ERP avec la suite Oracle (Forms, Reports, PL/SQL, SGBD) au sein d'une équipe d'une dizaine de personnes.<br/>
+                                    J'intervenais sur l'ensemble du cycle de vie du projet : création, modification et suppression de fonctionnalités, gestion de la base de données et développement de scripts externes.<br/>
+                                    En contact direct avec les clients, je participais à l'analyse de leurs besoins, à l'étude de faisabilité et à l'estimation des charges, tout en assurant un suivi clair et régulier.<br/>
+                                    <br/>
+                                    PLSQL | suite Oracle
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item my-2">
+                        <h2 class="accordion-header" id="accHead6">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#accBody6" aria-expanded="false" aria-controls="accBody6">
+                                <i class="fas fa-user-cog fa-2x p-2 float-left" aria-hidden="true"></i>
+                                <h4 class="text-uppercase mb-0 py-2">
+                                    ACD-GROUPE
+                                </h4>
+                            </button>
+                        </h2>
+                        <div id="accBody6" class="accordion-collapse collapse" aria-labelledby="accHead6" data-bs-parent="#accordeon">
+                            <div class="accordion-body">
+                                <p class="acc-subtitle">Novembre 2021 - Mai 2022</p>
+                                <p class="acc-text p-md-2">
+                                    Premier emploi en tant que développeur logiciel<br/>
+                                    Développement d'un logiciel de gestion de paie. Au sein du équipe d'une cinquantaine de développeurs, j'intervenais sur l'ensemble du cycle de vie du projet : création, modification et suppression de fonctionnalités ainsi que l'optimisation.<br/>
+                                    J'ai aussi créé du contenu pour le logiciel ainsi qu'une classe personnalisés pour les besoins de l'entreprise.<br/>
+                                    <br/>
+                                    Delphi10 | C# | .Net
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item my-2">
+                        <h2 class="accordion-header" id="accHead1">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#accBody1" aria-expanded="false" aria-controls="accBody1">
+                                <i class="fas fa-hands-helping fa-2x p-2 float-left" aria-hidden="true"></i>
+                                <h4 class="text-uppercase py-2">
+                                    Service civique
+                                </h4>
+                            </button>
+                        </h2>
+                        <div id="accBody1" class="accordion-collapse collapse" aria-labelledby="accHead1" data-bs-parent="#accordeon">
+                            <div class="accordion-body">
+                                <p class="acc-subtitle">Septembre 2020 - Juin 2021</p>
+                                <p class="acc-text p-md-2">
+                                    Service civique à l'USCBB<br/>
+                                    L'USCBB est le club de basket de Chauvigny. Mes missions au sein du club étaient d'aider le
+                                    club à l'organisation des matchs, accompagner les adhérents dans leurs démarches.
+                                    Et surtout, mettre à profit ma formation pour créer une application mobile afin
+                                    de faciliter la communication à tous les adhérents. <br/>
+                                    <br/>
+                                    Le projet, avec plus de détails, est disponible sur mon git <a href="https://github.com/AlexLeGuilb/uscbb">ici</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item my-2">
+                        <h2 class="accordion-header" id="accHead2">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#accBody2" aria-expanded="false" aria-controls="accBody2">
+                                <i class="fas fa-user-graduate fa-2x p-2 float-left" aria-hidden="true"></i>
+                                <h4 class="text-uppercase mb-0 py-2">
+                                    Stages
+                                </h4>
+                            </button>
+                        </h2>
+                        <div id="accBody2" class="accordion-collapse collapse" aria-labelledby="accHead2" data-bs-parent="#accordeon">
+                            <div class="accordion-body">
+                                <p class="acc-subtitle">
+                                    <h4 class="text-uppercase mb-0 py-2"><i class="fab fa-laravel black-text" aria-hidden="true"></i> Université de Poitiers</h4>Mai - Juillet 2019
+                                </p>
+                                <p class="acc-text p-md-2">
+                                    Stage en développement web<br/>
+                                    Conception d'une application web dans l'ENT de l'université pour permettre au personnel de s'inscrire à la compétition annuelle (et gérer l'équipe) ainsi que l'inscription au repas qui suit la compétition.<br/>
+                                    <br/>
+                                    Ce stage a été mon premier contact avec Laravel (et les framework en général), j'ai appris à utiliser Laravel, la structure MVC, Ajax et LDAP.<br/>
+                                    A la fin de mon stage, l'application était opérationnelle et validée par mon maître de stage.
+                                </p>
+                                <hr/>
+                                <p class="acc-subtitle">
+                                    <h4 class="text-uppercase mb-0 py-2"><i class="fas fa-gamepad black-text" aria-hidden="true"></i> Gemsa Game</h4>
+                                    Janvier - Février 2020
+                                </p>
+                                <p class="acc-text p-md-2">
+                                    Stage développement de jeu vidéo<br/>
+                                    Développement d'un jeu vidéo type plateformeur 2D en utilisant le moteur de jeu <a href="https://godotengine.org/fr/">Godot</a>.
+                                    Le moteur de jeu Godot est open source, gratuit et utilise le GDscript (du python remanié pour correspondre au moteur), le moteur est codé en C++.<br/>
+                                    Mes missions étaient d'améliorer et implémenter de nouvelles fonctionnalités pour le moteur et le jeu.<br/>
+                                    Ce stage est mon premier contact avec des logiciels de versionnage et de méthodes agile : la suite Atlassian (Jira, BitBucket et Confluence) pour faire un travail d'équipe bien coordonnée.<br/>
+                                    <br/>
+                                    A la fin de mon stage, les fonctionnalités développées sont opérationnelles mais améliorables.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item my-2">
+                        <h2 class="accordion-header" id="accHead4">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#accBody4" aria-expanded="false" aria-controls="accBody4">
+                                <i class="fas fa-user-cog fa-2x p-2 float-left black-text" aria-hidden="true"></i>
+                                <h4 class="text-uppercase mb-0 py-2">
+                                    Job d'été
+                                </h4>
+                            </button>
+                        </h2>
+                        <div id="accBody4" class="accordion-collapse collapse" aria-labelledby="accHead4" data-bs-parent="#accordeon">
+                            <div class="accordion-body">
+                                <p class="acc-subtitle">Estivin</p>
+                                <p class="acc-text p-md-2">
+                                    Job d'été 2019<br/>
+                                    Découpe et préparation de fruits et légumes destinés à la grande distribution, dans une
+                                    filliale d'Estivin.<br/>
+                                    Travail en horaires décalés (4h - 12h) en chambre froide.
+                                </p>
+                                <hr/>
+                                <p class="acc-subtitle">Ville de Chauvigny</p>
+                                <p class="acc-text p-md-2">
+                                    Job d'été 2018<br/>
+                                    Assistant technicien au service culturel.<br/>
+                                    Montage et démontage de scènes de théâtre et concert, participation à la mise en place
+                                    du 14 juillet et accueil du public.<br/>
+                                    <br/>
+                                    Job d'été 2017<br/>
+                                    Agent d'entretient au camping municipal.<br/>
+                                    Entretient des sanitaires, des espaces verts et des chalets.
+                                </p>
+                                <hr/>
+                                <p class="acc-subtitle">Autres expériences</p>
+                                <p class="acc-text p-md-2">
+                                    Je suis devenu arbitre officiel au collège, puis mis cette passion en pause pendant mes études supérieures. En 2024, je suis revenu sur les terrains en tant qu'arbitre officiel.
+                                    Une expérience qui m'enseigne chaque jour la maîtrise de soi, la communication claire et la gestion des situations tendues.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <script src="board.js"></script>
+    <!-- projet -->
+    <section id="projet" class="section content">
+        <div class="container">
+            <div class="row">
+                <h2 class="my-5 section-title text-center" data-aos="fade-up">Projets</h2>
+            </div>
+            <div class="row">
+                <div class="accordion" id="accordeonP" data-aos="fade-up">
+                    <div class="accordion-item my-2">
+                        <h2 class="accordion-header" id="accHeadP1">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#accBodyP1" aria-expanded="false" aria-controls="accBodyP1">
+                                <i class="fas fa-chess-knight fa-2x p-2" aria-hidden="true"></i>
+                                <h4 class="text-uppercase mb-0 py-2">
+                                    Échec en local
+                                </h4>
+                            </button>
+                        </h2>
+                        <div id="accBodyP1" class="accordion-collapse collapse" aria-labelledby="accHeadP1" data-bs-parent="#accordeonP">
+                            <div class="accordion-body">
+                                <p class="acc-subtitle">Jeu d'échec multijoueur en local</p>
+                                <p class="acc-text p-md-4 mb-0">Petit jeu d'échec classique. Jouable à 2 uniquement. La seule règle manquante est le en-passant.
+                                </p>
+                                <div id="carChess" class="carousel slide" data-bs-ride="false">
+                                    <div class="carousel-indicators">
+                                        <button type="button" data-bs-target="#carChess" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                                        <button type="button" data-bs-target="#carChess" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                        <button type="button" data-bs-target="#carChess" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                                    </div>
+                                    <div class="carousel-inner">
+                                        <div class="carousel-item active">
+                                            <img src="src/img/chess/start_game.png" class="projet-img" alt="Position de départ">
+                                            <div class="carousel-caption d-none d-md-block">
+                                                <h5>Nouvelle partie</h5>
+                                            </div>
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="src/img/chess/check_pos.png" class="projet-img" alt="Position d'échec">
+                                            <div class="carousel-caption d-none d-md-block">
+                                                <h5>Échec !</h5>
+                                            </div>
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="src/img/chess/pat_pos.png" class="projet-img" alt="Position de pat">
+                                            <div class="carousel-caption d-none d-md-block">
+                                                <h5>Pat !</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#carChess" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Previous</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#carChess" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Next</span>
+                                    </button>
+                                </div>
+                                <p class="acc-text p-md-4 mb-0">Pour plus de détails <a href="https://github.com/AlexLeGuilb/chess_offline">lien github</a> | Pour y jouer <a href="chess_offline/board.html">lien site</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item my-2">
+                        <h2 class="accordion-header" id="accHeadP2">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#accBodyP2" aria-expanded="false" aria-controls="accBodyP2">
+                                <i class="fas fa-graduation-cap fa-2x p-2 float-left black-text" aria-hidden="true"></i>
+                                <h4 class="text-uppercase mb-0 py-2">
+                                    FuturoVTC
+                                </h4>
+                            </button>
+                        </h2>
+                        <div id="accBodyP2" class="accordion-collapse collapse" aria-labelledby="accHeadP2" data-bs-parent="#accordeonP">
+                            <div class="accordion-body">
+                                <p class="acc-subtitle">Projet en équipe durant ma licence pro</p>
+                                <p class="acc-text p-md-4 mb-0">
+                                    Réalisé en quelques semaines avec une équipe de 4 personnes.<br/>
+                                    On a reçu un cahier des charges, c'était à nous d'intéroger le client (acté par un prof) pour comprendre ce qu'il voulait.
+                                    Le choix de la technologie et de l'organisation était à notre discrétion. Il y avait une date limite assez courte pour rendre le projet,
+                                    la documentation utilisateur et technique ainsi que faire une présentation.<br/>
+                                </p>
+                                <div id="carFuturo" class="carousel slide" data-bs-ride="false">
+                                    <div class="carousel-indicators">
+                                        <button type="button" data-bs-target="#carFuturo" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                                        <button type="button" data-bs-target="#carFuturo" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                        <button type="button" data-bs-target="#carFuturo" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                                        <button type="button" data-bs-target="#carFuturo" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                                    </div>
+                                    <div class="carousel-inner">
+                                        <div class="carousel-item active">
+                                            <img src="src/img/futuro/compta_1.png" class="projet-img" alt="Vue compta 1">
+                                            <div class="carousel-caption d-none d-md-block">
+                                                <h5>Visuel d'un comptable</h5>
+                                            </div>
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="src/img/futuro/compta_2.png" class="projet-img" alt="Vue compta 2">
+                                            <div class="carousel-caption d-none d-md-block">
+                                                <h5>PDF généré</h5>
+                                            </div>
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="src/img/futuro/driver.png" class="projet-img" alt="Vue chauffeur">
+                                            <div class="carousel-caption d-none d-md-block">
+                                                <h5>Visuel d'un chauffeur</h5>
+                                            </div>
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="src/img/futuro/rh.png" class="projet-img" alt="Vue rh">
+                                            <div class="carousel-caption d-none d-md-block">
+                                                <h5>Visuel d'un RH</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#carFuturo" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Previous</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#carFuturo" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Next</span>
+                                    </button>
+                                </div>
+                                <p class="acc-text p-md-4 mb-0">Pour plus de détails <a href="https://github.com/AlexLeGuilb/futurovtc">lien github</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item my-2">
+                        <h2 class="accordion-header" id="accHeadP3">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#accBodyP3" aria-expanded="false" aria-controls="accBodyP3">
+                                <i class="fas fa-basketball-ball fa-2x p-2" aria-hidden="true"></i>
+                                <h4 class="text-uppercase mb-0 py-2">
+                                    USCB
+                                </h4>
+                            </button>
+                        </h2>
+                        <div id="accBodyP3" class="accordion-collapse collapse" aria-labelledby="accHeadP3" data-bs-parent="#accordeonP">
+                            <div class="accordion-body">
+                                <p class="acc-subtitle">Application mobile</p>
+                                <p class="acc-text p-md-4 mb-0">
+                                    Développement d'une application mobile pour le club de basket de Chauvigny.<br/>
+                                    Comme décrit <a href="#accBody1">ici</a>, j'ai développé deux applications, une mobile pour les utilisateurs et une web pour administrer la première.<br/>
+                                    Aujourd'hui, il ne reste que l'app mobile parce que j'ai mal fait mon travail de sauvegarde.
+                                </p>
+                                <div id="carUscb" class="carousel slide" data-bs-ride="false">
+                                    <div class="carousel-indicators">
+                                        <button type="button" data-bs-target="#carUscb" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                                        <button type="button" data-bs-target="#carUscb" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                        <button type="button" data-bs-target="#carUscb" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                                    </div>
+                                    <div class="carousel-inner">
+                                        <div class="carousel-item active">
+                                            <img src="src/img/uscb/match.png" class="projet-img float-start" alt="Vue des matchs">
+                                            <img src="src/img/uscb/result.png" class="projet-img float-end" alt="Vue des résultats">
+                                            <div class="carousel-caption d-none d-md-block">
+                                                <h5>Partie planning des matchs et résultats</h5>
+                                            </div>
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="src/img/uscb/event.png" class="projet-img float-start" alt="Vue des évènement">
+                                            <img src="src/img/uscb/message.png" class="projet-img float-end" alt="Vue des messages">
+                                            <div class="carousel-caption d-none d-md-block">
+                                                <h5>Partie annonce d'évènements et messages du club</h5>
+                                            </div>
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="src/img/uscb/benev.png" class="projet-img" alt="Vue des bénévolats">
+                                            <div class="carousel-caption d-none d-md-block">
+                                                <h5>Partie planning pour aider le club</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#carUscb" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Previous</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#carUscb" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Next</span>
+                                    </button>
+                                </div>
+                                <p class="acc-text p-md-4 mb-0">Pour plus de détails <a href="https://github.com/AlexLeGuilb/uscbb">lien github</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item my-2">
+                        <h2 class="accordion-header" id="accHeadP4">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#accBodyP4" aria-expanded="false" aria-controls="accBodyP4">
+                                <i class="fas fa-step-forward fa-2x p-2" aria-hidden="true"></i>
+                                <h4 class="text-uppercase mb-0 py-2">
+                                    Dans le futur
+                                </h4>
+                            </button>
+                        </h2>
+                        <div id="accBodyP4" class="accordion-collapse collapse" aria-labelledby="accHeadP4" data-bs-parent="#accordeonP">
+                            <div class="accordion-body">
+                                <p class="acc-text p-md-4 mb-0">
+                                    Je travaille actuellement sur d'autres projets à venir. Ils seront ajoutés ici prochainement — revenez bientôt pour les découvrir.
+                                </p>
+                                <p class="acc-text p-md-4 mb-0">Pour voir l'ensemble de mes projets : <a href="https://github.com/AlexLeGuilb/uscbb">lien github</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- formation -->
+    <section id="formation" class="section parallax parallax-1">
+        <div class="container">
+            <div class="row">
+                <h2 class="my-5 section-title text-center" data-aos="fade-up">Formations</h2>
+            </div>
+            <div class="row">
+                <div class="accordion" id="accordeonF" data-aos="fade-up">
+                    <div class="accordion-item my-2">
+                        <h2 class="accordion-header" id="accHeadF1">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#accBodyF1" aria-expanded="false" aria-controls="accBodyF1">
+                                <i class="fas fa-graduation-cap fa-2x p-2 float-left black-text" aria-hidden="true"></i>
+                                <h4 class="text-uppercase mb-0 py-2">
+                                    Licence Pro TLWTM
+                                </h4>
+                            </button>
+                        </h2>
+                        <div id="accBodyF1" class="accordion-collapse collapse" aria-labelledby="accHeadF1" data-bs-parent="#accordeonF">
+                            <div class="accordion-body">
+                                <p class="acc-subtitle"><strong>2020 - 2021</strong></p>
+                                <p class="acc-text p-md-4 mb-0">
+                                    Licence Pro : Technologies Logicielles, Web & Terminaux Mobiles.<br/>
+                                    Cette année est plus axée sur la gestion de projet et l'approfondissement des
+                                    connaissances du BTS SIO.
+                                    J'apprends de nouveaux langages et de nouvelles technologies que je mets actuellement
+                                    en application pour mon service civique.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item my-2">
+                        <h2 class="accordion-header" id="accHeadF2">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#accBodyF2" aria-expanded="false" aria-controls="accBodyF2">
+                                <i class="fas fa-graduation-cap fa-2x p-2 float-left black-text" aria-hidden="true"></i>
+                                <h4 class="text-uppercase mb-0 py-2">
+                                    BTS SIO
+                                </h4>
+                            </button>
+                        </h2>
+                        <div id="accBodyF2" class="accordion-collapse collapse" aria-labelledby="accHeadF2" data-bs-parent="#accordeonF">
+                            <div class="accordion-body">
+                                <p class="acc-subtitle"><strong>2020 - 2021</strong></p>
+                                <p class="acc-text p-md-4 mb-0">
+                                    Études centrées sur le développement web / logiciel et android. J'ai pu y apprendre
+                                    la gestion de projets, la création de cahiers des charges,
+                                    les bases du managment. J'ai aussi appris les bases de l'infrastrucre réseau et de
+                                    la mise en place de services informatiques comme GLPI, Odoo et
+                                    Moodle, etc...<br/>
+                                    L'utilisation d'une veille informatique, mes stages et ma curiosité m'ont permis
+                                    d'être un des meilleurs éléments de ma promotion.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item my-2">
+                        <h2 class="accordion-header" id="accHeadF3">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#accBodyF3" aria-expanded="false" aria-controls="accBodyF3">
+                                <i class="fas fa-graduation-cap fa-2x p-2 float-left black-text" aria-hidden="true"></i>
+                                <h4 class="text-uppercase mb-0 py-2">
+                                    DUT Réseaux et Télécoms.
+                                </h4>
+                            </button>
+                        </h2>
+                        <div id="accBodyF3" class="accordion-collapse collapse" aria-labelledby="accHeadF3" data-bs-parent="#accordeonF">
+                            <div class="accordion-body">
+                                <p class="acc-subtitle"><strong>2017 - 2018</strong></p>
+                                <p class="acc-text p-md-4 mb-0">
+                                    Première année de DUT<br/>
+                                    Au cours de cette année de formation, je me suis rendu compte que je préférais le
+                                    développement et la programmation à l'administration systèmes et réseaux.
+                                    A la fin de cette année j'ai préféré me rediriger vers le BTS SIO.<br/>
+                                    Grâce à cette année de formaton j'ai pu acquérir des connaissances approfondies sur
+                                    l'infrastructure réseau, le fonctionnent des moyens de communications
+                                    etc... J'ai aussi préparé la certification Cisco sans toute fois l'obtenir. Cela me
+                                    permet d'avoir des connaissances plus approfondies que mes camarades de classe
+                                    développeurs.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- skill -->
+    <section id="skill" class="section content">
+        <div class="container">
+            <div class="row">
+                <div class="my-5 section-title text-center" data-aos="fade-up">Compétences</div>
+            </div>
+            <div class="row text-center">
+                <p class="section-credit" data-aos="fade-right">survolez/touchez pour voir les détails.</p>
+            </div>            
+            <div class="row">
+                <div class="row text-center my-5" data-aos="fade-up">
+                    <div class="col-12 col-lg-4 liste">
+                        <div class="skillTitle">Langages</div>
+                        <i class="fab fa-html5 fa-2x" data-bs-toggle="tooltip" data-bs-title="HTML5 : 9/10"></i>
+                        <i class="fab fa-css3-alt fa-2x" data-bs-toggle="tooltip" data-bs-title="CSS3 : 9/10"></i>
+                        <i class="fab fa-js-square fa-2x" data-bs-toggle="tooltip" data-bs-title="JavaScript : 7/10"></i>
+                        <i class="fab fa-php fa-2x" data-bs-toggle="tooltip" data-bs-title="PHP : 8/10"></i>
+                        <i class="icon-csharp fa-2x" data-bs-toggle="tooltip" data-bs-title="C# : 6/10"></i>
+                        <i class="icon-cplusplus fa-2x" data-bs-toggle="tooltip" data-bs-title="C++ : 4/10"></i>
+                        <i class="fab fa-java fa-2x" data-bs-toggle="tooltip" data-bs-title="Java : 5/10"></i>
+                        <i class="icon-shell fa-2x" data-bs-toggle="tooltip" data-bs-title="Shell : 7/10"></i>
+                        <i class="icon-script-alt fa-2x" data-bs-toggle="tooltip" data-bs-title="Script bash : 7/10"></i>
+                    </div>
+                    <div class="col-12 col-lg-4 liste">
+                        <div class="skillTitle">Frameworks</div>
+                        <i class="fab fa-mdb fa-2x" data-bs-toggle="tooltip" data-bs-title="Material Desing Bootstrap : 8/10"></i>
+                        <i class="icon-bootstrap fa-2x" data-bs-toggle="tooltip" data-bs-title="Bootstrap : 9/10"></i>
+                        <i class="icon-jquery fa-2x" data-bs-toggle="tooltip" data-bs-title="JQuery : 7/10"></i>
+                        <i class="icon-laravel fa-2x" data-bs-toggle="tooltip" data-bs-title="Laravel : 8/10"></i>
+                        <i class="icon-reactjs fa-2x" data-bs-toggle="tooltip" data-bs-title="React-Native : 3/10"></i>
+                        <i class="icon-symfony fa-2x" data-bs-toggle="tooltip" data-bs-title="Symfony : 6/10"></i>
+                        <i class="fab fa-java fa-2x" data-bs-toggle="tooltip" data-bs-title="Java FX : 3/10">fx</i>
+                    </div>
+                    <div class="col-12 col-lg-4 liste">
+                        <div class="skillTitle">Base de données</div>
+                        <i class="icon-mariadb fa-2x" data-bs-toggle="tooltip" data-bs-title="MariaDB : 8/10"></i>
+                        <i class="icon-mysql fa-2x" data-bs-toggle="tooltip" data-bs-title="MySQL : 9.5/10"></i>
+                        <i class="icon-postgres fa-2x" data-bs-toggle="tooltip" data-bs-title="PostgreSQL : 7/10"></i>
+                        <i class="icon-oracle fa-2x" data-bs-toggle="tooltip" data-bs-title="SGBD Oracle : 8/10"></i>
+                    </div>
+                </div>
+                <div class="row text-center my-5">
+                    <div class="col-12 col-lg-6 liste">
+                        <div class="skillTitle">Logiciels / outils / OS</div>
+                        <i class="icon-debian align-top fa-2x" data-bs-toggle="tooltip" data-bs-title="Debian et autres distributions Unix : 7/10"></i>
+                        <i class="fab fa-windows align-top fa-2x" data-bs-toggle="tooltip" data-bs-title="Windows : 8/10"></i>
+                        <i class="icon-apache align-top fa-2x" data-bs-toggle="tooltip" data-bs-title="Apache2 : 7/10"></i>
+                        <i class="fab fa-trello align-top fa-2x" data-bs-toggle="tooltip" data-bs-title="Trello : 10/10"></i>
+                        <i class="fab fa-jira align-top fa-2x" data-bs-toggle="tooltip" data-bs-title="Jira : 10/10"></i>
+                        <i class="fab fa-bitbucket align-top fa-2x" data-bs-toggle="tooltip" data-bs-title="BitBucket : 8/10"></i>
+                        <i class="fab fa-confluence align-top fa-2x" data-bs-toggle="tooltip" data-bs-title="Confluence: 10/10"></i>
+                        <i class="fas fa-network-wired fa-2x" data-bs-toggle="tooltip" data-bs-title="Infrastructure réseau : 5/10"></i>
+                    </div>
+                    <div class="col-12 col-lg-6 liste">
+                        <div class="skillTitle">Compétences technique</div>
+                        <i class="fas fa-users fa-2x" data-bs-toggle="tooltip" data-bs-title="Travail en groupe"></i>
+                        <i class="fas fa-code-branch fa-2x" data-bs-toggle="tooltip" data-bs-title="Développement organisé (git)"></i>
+                        <i class="fas fa-file-signature fa-2x" data-bs-toggle="tooltip" data-bs-title="Rédaction de cahiers des charges"></i>
+                        <i class="fas fa-network-wired fa-2x" data-bs-toggle="tooltip" data-bs-title="Infrastructure réseau"></i>
+                        <i class="fas fa-lock fa-2x" data-bs-toggle="tooltip" data-bs-title="Applications sécurisées"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact" class="contact">
+        <div class="container">
+            <div class="row py-5 justify-content-center">
+                <div class="col-12 col-md-6 col-lg-4 my-2 my-md-0">
+                    <h2 class="footer-title">Alexandre Guilbaud</h2>
+                    <div class="d-flex">
+                        <a class="footer-link mx-2" href="https://www.linkedin.com/in/alexandre-guilbaud-875702270/" data-bs-toggle="tooltip" data-bs-title="Je l'utilise que très peu"><i class="fab fa-2x fa-linkedin"></i></a>
+                        <a class="footer-link mx-2" href="https://github.com/AlexLeGuilb/" data-bs-toggle="tooltip" data-bs-title="Mon GitHub"><i class="fab fa-2x fa-github"></i></a>
+                        <a class="footer-link mx-2" href="" data-bs-toggle="tooltip" data-bs-title="Mon CV"><i class="fas fa-2x fa-file"></i></a>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 my-2 my-md-0">
+                    <h2 class="footer-title">Me contacter</h2>
+                    <ul class="list-unstyled">
+                        <li><i class="icon fa fa-phone mx-1"></i> 06 33 79 16 93</li>
+                        <li><i class="icon fa fa-paper-plane mx-1"></i>alexandre.guilbaud@tutanota.com</li>
+                    </ul>
+                </div>
+                <div class="col-12 col-md-12 col-lg-4 my-2 my-md-0">
+                    <h2 class="footer-title">Plus d'information</h2>
+                    <div class="block-23 mb-3">
+                        <ul class="list-unstyled">
+                            <li><i class="icon fa fa-map mx-1"></i>34 rue de la Triaudière, 86300 Chauvigny, France</li>
+                            <li><i class="fa fa-chevron-right mx-1"></i>Déménagement possible si cela reste à moins de 1h de route de Poitiers</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid py-2 bg-black">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <p class="mb-0" style="color: rgba(255,255,255,.5);">
+                            &copy; 2025 Alexandre Guilbaud. Tous droits réservés.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="node_modules/aos/dist/aos.js"></script>    
+    <script src="src/js/index.js"></script>
 </body>
+
 </html>

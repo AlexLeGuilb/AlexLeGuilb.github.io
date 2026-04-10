@@ -24,10 +24,10 @@
 </head>
 
 <body>
-    <nav id="navbar" class="navbar navbar-expand-lg navbar-dark fixed-top transparent" style="padding: 0;">
+    <nav id="navbar" class="navbar navbar-expand-lg navbar-light fixed-top bg-white z-3" style="padding: 0;">
         <div class="container-fluid">
             <a class="navbar-brand" href="#accueil">
-                <img id="logo" src="src/img/autre/logo.png" style="width: 40px;" alt="PortFolio">
+                <img id="logo" src="src/img/autre/logo_dark.png" style="width: 40px;" alt="PortFolio">
                 Portfolio
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navBS" aria-controls="navBS" aria-expanded="false" aria-label="Toggle navigation">
@@ -58,9 +58,42 @@
             </div>
         </div>
     </nav>
-
+    <div class="z-2 fixed-top bg-white" id="quick-info">
+        <div class="container">
+            <div class="row mt-5 pt-1 pb-0 justify-content-center">
+                <div class="col-12 col-md-6 my-2 my-md-0">
+                    <h2 class="footer-title">Mes informations</h2>
+                    <ul class="list-unstyled">
+                        <li><i class="icon fa fa-map mx-1"></i>86300 Chauvigny, France</li>
+                        <li><i class="icon fa fa-phone mx-1"></i> 06 33 79 16 93</li>
+                        <li><i class="icon fa fa-paper-plane mx-1"></i>alexandre.guilbaud@tutanota.com</li>
+                        <li>
+                        <a target="_blank" rel="noopener noreferrer" class="text-black text-decoration-none mx-2"
+                                href="https://www.linkedin.com/in/alexandre-guilbaud-875702270/" data-bs-toggle="tooltip"
+                                data-bs-title="Mon LinkedIn"><i class="fab  fa-linkedin"></i></a>
+                        <a target="_blank" rel="noopener noreferrer" class="text-black text-decoration-none mx-2" href="https://github.com/AlexLeGuilb/"
+                                data-bs-toggle="tooltip" data-bs-title="Mon GitHub"><i class="fab  fa-github"></i></a>
+                        <a target="_blank" rel="noopener noreferrer" class="text-black text-decoration-none mx-2" href="src/ressources/CV_alexandre_GUILBAUD.pdf"
+                                target="_blank" rel="noopener noreferrer" data-bs-toggle="tooltip" data-bs-title="Mon CV"><i
+                                    class="fas  fa-file"></i></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-12 col-md-6 my-2 my-md-0">
+                    <h2 class="footer-title">Ce que je cherche</h2>
+                    <div class="block-23 mb-3">
+                        <ul class="list-unstyled">
+                            <li><i class="fa fa-chevron-right mx-1"></i>CDI / CDD à temps plein (35h/39h)</li>
+                            <li><i class="fa fa-chevron-right mx-1"></i>Travail en présentiel possible en restant à environ 2h de Poitiers (Tours, Nantes, Niort...)</li>
+                            <li><i class="fa fa-chevron-right mx-1"></i>Travail en distantiel, avec ou sans, déplacement ponctuel possible dans toutes la France</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- fond accueil -->
-    <section id="accueil" class="section parallax parallax-1">
+    <section id="accueil" class="section parallax parallax-1 z-0">
         <div class="container">
             <div class="text-center" data-aos="fade-up">
                 <div class="section-title"><i>Alexandre Guilbaud</i></div>
@@ -594,27 +627,34 @@
     <footer id="contact" class="contact">
         <div class="container">
             <div class="row py-5 justify-content-center">
-                <div class="col-12 col-md-6 col-lg-4 my-2 my-md-0">
-                    <h2 class="footer-title">Alexandre Guilbaud</h2>
-                    <div class="d-flex">
-                        <a target="_blank" rel="noopener noreferrer" class="footer-link mx-2" href="https://www.linkedin.com/in/alexandre-guilbaud-875702270/" data-bs-toggle="tooltip" data-bs-title="Je l'utilise que très peu"><i class="fab fa-2x fa-linkedin"></i></a>
-                        <a target="_blank" rel="noopener noreferrer" class="footer-link mx-2" href="https://github.com/AlexLeGuilb/" data-bs-toggle="tooltip" data-bs-title="Mon GitHub"><i class="fab fa-2x fa-github"></i></a>
-                        <a target="_blank" rel="noopener noreferrer" class="footer-link mx-2" href="src/ressources/CV_alexandre_GUILBAUD.pdf" target="_blank" rel="noopener noreferrer" data-bs-toggle="tooltip" data-bs-title="Mon CV"><i class="fas fa-2x fa-file"></i></a>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4 my-2 my-md-0">
-                    <h2 class="footer-title">Me contacter</h2>
+                <div class="col-12 col-md-6 my-2 my-md-0">
+                    <h2 class="footer-title">Mes informations</h2>
                     <ul class="list-unstyled">
+                        <li><i class="icon fa fa-map mx-1"></i>86300 Chauvigny, France</li>
                         <li><i class="icon fa fa-phone mx-1"></i> 06 33 79 16 93</li>
                         <li><i class="icon fa fa-paper-plane mx-1"></i>alexandre.guilbaud@tutanota.com</li>
+                        <li>
+                            <a target="_blank" rel="noopener noreferrer" class="footer-link mx-2"
+                                href="https://www.linkedin.com/in/alexandre-guilbaud-875702270/" data-bs-toggle="tooltip"
+                                data-bs-title="Mon LinkedIn"><i class="fab  fa-linkedin"></i></a>
+                            <a target="_blank" rel="noopener noreferrer" class="footer-link mx-2"
+                                href="https://github.com/AlexLeGuilb/" data-bs-toggle="tooltip" data-bs-title="Mon GitHub"><i
+                                    class="fab  fa-github"></i></a>
+                            <a target="_blank" rel="noopener noreferrer" class="footer-link mx-2"
+                                href="src/ressources/CV_alexandre_GUILBAUD.pdf" target="_blank" rel="noopener noreferrer"
+                                data-bs-toggle="tooltip" data-bs-title="Mon CV"><i class="fas  fa-file"></i></a>
+                        </li>
                     </ul>
                 </div>
-                <div class="col-12 col-md-12 col-lg-4 my-2 my-md-0">
-                    <h2 class="footer-title">Plus d'information</h2>
+                <div class="col-12 col-md-6 my-2 my-md-0">
+                    <h2 class="footer-title">Ce que je cherche</h2>
                     <div class="block-23 mb-3">
                         <ul class="list-unstyled">
-                            <li><i class="icon fa fa-map mx-1"></i>34 rue de la Triaudière, 86300 Chauvigny, France</li>
-                            <li><i class="fa fa-chevron-right mx-1"></i>Déménagement possible si cela reste à moins de 1h de route de Poitiers</li>
+                            <li><i class="fa fa-chevron-right mx-1"></i>CDI / CDD à temps plein (35h/39h)</li>
+                            <li><i class="fa fa-chevron-right mx-1"></i>Travail en présentiel possible en restant à environ 2h de
+                                Poitiers (Tours, Nantes, Niort...)</li>
+                            <li><i class="fa fa-chevron-right mx-1"></i>Travail en distantiel, avec ou sans, déplacement ponctuel
+                                possible dans toutes la France</li>
                         </ul>
                     </div>
                 </div>

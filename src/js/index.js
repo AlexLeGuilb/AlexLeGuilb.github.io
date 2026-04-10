@@ -16,18 +16,21 @@ document.getElementById('age').innerHTML = age;
 //document.getElementById('annee').innerHTML = today.getFullYear();
 
 // Aspect visuel
-const navbar = document.getElementById('navbar');
+const qi = document.getElementById('quick-info');
 const logo = document.getElementById('logo');
 const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
 const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+
 if (window.scrollY > 400) {
-	navbar.classList.replace('transparent', 'bg-white');
-	navbar.classList.replace('navbar-dark', 'navbar-light');
-	logo.src = 'src/img/autre/logo_dark.png';
+	qi.style.display = 'none';
+	//navbar.classList.replace('transparent', 'bg-white');
+	//navbar.classList.replace('navbar-dark', 'navbar-light');
+	//logo.src = 'src/img/autre/logo_dark.png';
 } else {
-	navbar.classList.replace('bg-white', 'transparent');
-	navbar.classList.replace('navbar-light', 'navbar-dark');
-	logo.src = 'src/img/autre/logo.png';
+	qi.style.display = 'block';
+	//navbar.classList.replace('bg-white', 'transparent');
+	//navbar.classList.replace('navbar-light', 'navbar-dark');
+	//logo.src = 'src/img/autre/logo.png';
 }
 
 
@@ -40,12 +43,14 @@ AOS.init();
  */
 window.addEventListener('scroll', () => {
 	if (window.scrollY > 400) {
-		navbar.classList.replace('transparent', 'bg-white');
-		navbar.classList.replace('navbar-dark', 'navbar-light');
-		logo.src = 'src/img/autre/logo_dark.png';
+		qi.style.display = 'none';
+		//navbar.classList.replace('transparent', 'bg-white');
+		//navbar.classList.replace('navbar-dark', 'navbar-light');
+		//logo.src = 'src/img/autre/logo_dark.png';
 	} else {
-		navbar.classList.replace('bg-white', 'transparent');
-		navbar.classList.replace('navbar-light', 'navbar-dark');
-		logo.src = 'src/img/autre/logo.png';
-	}	
+		qi.style.display = 'block';
+		//navbar.classList.replace('bg-white', 'transparent');
+		//navbar.classList.replace('navbar-light', 'navbar-dark');
+		//logo.src = 'src/img/autre/logo.png';
+	}
 });
